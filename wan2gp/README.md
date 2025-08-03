@@ -5,7 +5,7 @@ This docker image contains a build targeted at NVIDIA Ampere architecture
 To build:
 
 ```bash
-docker build -t wan2gp .
+docker build -t wan2gp:latest .
 ```
 
 To run
