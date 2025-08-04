@@ -20,5 +20,6 @@ export WGP_PORT=3000
 export WGP_DIR=/home/me/Wan2GP
 export WGP_LORA_DIR=/home/me/Models/alt/lora
 export WGPU_ID=1
+export WGP_CONF=/home/me/Repos/replications/wan2gp/wgp_config.json
 docker compose up
 ```
