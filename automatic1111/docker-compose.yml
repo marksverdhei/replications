@@ -6,10 +6,11 @@ services:
 
     image: automatic1111:latest
     ports:
-      - "127.0.0.1:${PORT}:7860"
+      - "127.0.0.1:${PORT:-7860}:7860"
     volumes:
       - automatic1111:/home/ubuntu
       - ${CHECKPOINTS}:/home/ubuntu/stable-diffusion-webui/models/Stable-diffusion
+      - ${LORAS}:/home/ubuntu/stable-diffusion-webui/models/Lora
     deploy:
       resources:
         reservations:
