@@ -12,6 +12,7 @@ services:
       - "${WGP_LORA_DIR:-${WGP_DIR}}:/workspace/Wan2GP/loras_i2v"
       - "${OUTPUT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/outputs"
       - "${CKPT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/ckpts"
+      - "${WGP_CONF:-${WGP_DIR}}:/workspace/Wan2GP/wgp_config.json"
     command: python wgp.py --server-port 7860 --listen
     deploy:
       resources:

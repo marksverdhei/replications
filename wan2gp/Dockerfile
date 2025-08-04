@@ -1,6 +1,8 @@
 ARG BASE_IMAGE=nvidia/cuda:12.8.1-cudnn-devel-ubuntu24.04
 FROM ${BASE_IMAGE}
 
+ARG GPU_ARCH=8.6
+
 RUN apt update && \
   apt upgrade -y && \
   apt install git wget libgl1 libglib2.0-0 software-properties-common -y && \
@@ -24,12 +26,12 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/deepbeepmeep/Wan2GP.git
 WORKDIR /workspace/Wan2GP
-RUN python3.10 -m venv .venv && \
-  . ./.venv/bin/activate && \
-  python -m pip install --upgrade pip && \
-  pip install torch==2.7.0 torchvision torchaudio && \
-  pip install -r requirements.txt
+RUN python3.10 -m venv .venv
 
-RUN TORCH_CUDA_ARCH_LIST=8.6 pip install git+https://github.com/woct0rdho/SageAttention/ --no-build-isolation
+RUN ./.venv/bin/pip install --upgrade pip
+RUN ./.venv/bin/pip install torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu128
+RUN ./.venv/bin/pip install -r requirements.txt
+RUN TORCH_CUDA_ARCH_LIST=${GPU_ARCH} ./.venv/bin/pip install git+https://github.com/woct0rdho/SageAttention/ --no-build-isolation
 
-CMD ["python", "wgp.py", "--listen"]
+ENTRYPOINT ["/workspace/Wan2GP/.venv/bin/python", "wgp.py", "--listen"]
+# CMD ["/workspace/Wan2GP/.venv/bin/python", "wgp.py", "--listen"]
