@@ -24,13 +24,14 @@ RUN apt-get update && \
     python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /workspace
 RUN git clone https://github.com/deepbeepmeep/Wan2GP.git
 WORKDIR /workspace/Wan2GP
 RUN python3.10 -m venv .venv
 
 RUN ./.venv/bin/pip install --upgrade pip
-RUN ./.venv/bin/pip install torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu128
-RUN ./.venv/bin/pip install -r requirements.txt
+RUN ./.venv/bin/pip install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/test/cu124
+RUN ./.venv/bin/pip install -r /workspace/Wan2GP/requirements.txt
 RUN TORCH_CUDA_ARCH_LIST=${GPU_ARCH} ./.venv/bin/pip install git+https://github.com/woct0rdho/SageAttention/ --no-build-isolation
 
 ENTRYPOINT ["/workspace/Wan2GP/.venv/bin/python", "wgp.py", "--listen"]
