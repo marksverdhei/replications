@@ -1,0 +1,23 @@
+services:
+  automatic1111-webui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: automatic1111:latest
+    ports:
+      - "127.0.0.1:7860:7860"
+    volumes:
+      - automatic1111:/home/ubuntu
+      - /home/me/Models/alt/checkpoints/:/home/ubuntu/stable-diffusion-webui/models/Stable-diffusion
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["1"]
+              capabilities: [gpu]
+
+volumes:
+  automatic1111:
+
