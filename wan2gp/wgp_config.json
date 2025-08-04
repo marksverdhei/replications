@@ -1,17 +1,21 @@
 {
-        "attention_mode" : "sage2",  
-        "transformer_types": [], 
-        "transformer_quantization": "int8",
-        "text_encoder_quantization" : "int8",
-        "save_path": "outputs",
-        "compile" : "transformer",
-        "metadata_type": "metadata",
-        "default_ui": "i2v_720p",
-        "boost" : 1,
-        "clear_file_list" : 5,
-        "vae_config": 0,
-        "profile" : 3,
-        "preload_model_policy": [],
-        "UI_theme": "default",
-        "notification_sound_enabled": false
+    "attention_mode": "sage2",
+    "transformer_types": [],
+    "transformer_quantization": "int8",
+    "text_encoder_quantization": "int8",
+    "save_path": "outputs",
+    "compile": "transformer",
+    "metadata_type": "metadata",
+    "default_ui": "i2v_720p",
+    "boost": 1,
+    "clear_file_list": 5,
+    "vae_config": 0,
+    "profile": 1,
+    "preload_model_policy": [],
+    "UI_theme": "default",
+    "notification_sound_enabled": false,
+    "last_model_per_family": {
+        "wan2_2": "t2v_2_2"
+    },
+    "last_model_type": "t2v_2_2"
 }
