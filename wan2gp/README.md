@@ -17,9 +17,11 @@ Docker compose:
 
 ```bash
 export WGP_PORT=3000
-export WGP_DIR=/home/me/Wan2GP
-export WGP_LORA_DIR=/home/me/Models/alt/lora
+export WGP_DIR=/path/to/Wan2GP
+export WGP_LORA_DIR=/path/to/lora
+# If you want to use your second GPU
 export WGPU_ID=1
-export WGP_CONF=/home/me/Repos/replications/wan2gp/wgp_config.json
+# e.g. this config
+export WGP_CONF=$PWD/wgp_config.json
 docker compose up
 ```
