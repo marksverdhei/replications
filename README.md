@@ -5,7 +5,7 @@ For builds we will mainly be focusing on / assuming RTX 3090, or CUDA ARCH 3.8 (
 
 
 - [x] Wan2GP
-- [ ] SongGeneration
+- [x] automatic1111 stable-diffusion webui
+- [ ] YuE
 - [ ] ACE-STEP
-- [ ] BLT
 - [ ] diffusion-pipe

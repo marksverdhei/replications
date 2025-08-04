@@ -1,0 +1,18 @@
+services:
+  wan2gp:
+    image: wan2gp
+    volumes:
+      - models:/workspace/wan2gp
+    ports:
+      - "127.0.0.1:7860:7860"
+    device_requests:
+      - driver: nvidia
+        count: -1          # "-1" means “all available”
+        capabilities: 
+          - gpu
+    # override default CMD
+    command: python wgp.py --server-port 7860 --listen
+    restart: unless-stopped
+
+volumes:
+  models:
