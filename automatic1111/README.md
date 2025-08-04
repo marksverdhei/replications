@@ -1,9 +1,19 @@
+# AUTOMATIC1111 stable-diffusion-webui
+
 https://github.com/AUTOMATIC1111
 
-drit -v /home/me/Models/alt/checkpoints/:/home/me/stable-diffusion-webui/ -v automatic1111:/home/ubuntu/stable-diffusion-webui -p 127.0.0.1:7860:7860 --gpus all automatic1111:latest
+This is one of the most popular frontends for local image generation inference.
 
-drit -v /home/me/Models/alt/checkpoints/:/home/ubuntu/stable-diffusion-webui/models/Stable-diffusion -v automatic1111:/home/ubuntu/stable-diffusion-webui -p 127.0.0.1:7860:7860 --gpus all automatic1111:latest
+```bash
+docker build -t automatic1111 .
+```
 
-docker exec -it $(dcf) bash
-
-drit -v automatic1111:/home/ubuntu/stable-diffusion-webui -p 127.0.0.1:7860:7860 --gpus all automatic1111:latest bash
+```bash
+export CHECKPOINTS=/path/to/your/checkpoints # if you have custom checkpoints
+docker run -it \
+  -v $CHECKPOINTS:/home/ubuntu/stable-diffusion-webui/models/Stable-diffusion \
+  -v automatic1111:/home/ubuntu/stable-diffusion-webui \
+  -p 127.0.0.1:7860:7860 \
+  --gpus all \
+  automatic1111:latest
+```
