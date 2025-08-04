@@ -1,18 +1,26 @@
 services:
-  wan2gp:
-    image: wan2gp
-    volumes:
-      - models:/workspace/wan2gp
+  wgp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: wan2gp:latest
     ports:
-      - "127.0.0.1:7860:7860"
-    device_requests:
-      - driver: nvidia
-        count: -1          # "-1" means “all available”
-        capabilities: 
-          - gpu
-    # override default CMD
+      - "127.0.0.1:${WGP_PORT:-7860}:7860"
+    volumes:
+      - "${WGP_LORA_DIR:-${WGP_DIR}}:/workspace/Wan2GP/loras"
+      - "${WGP_LORA_DIR:-${WGP_DIR}}:/workspace/Wan2GP/loras_i2v"
+      - "${OUTPUT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/outputs"
+      - "${CKPT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/ckpts"
     command: python wgp.py --server-port 7860 --listen
-    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${WGPU_ID:-0}"]
+              capabilities: [gpu]
 
 volumes:
-  models:
+  wan2gp:
+

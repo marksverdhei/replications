@@ -31,3 +31,5 @@ RUN python3.10 -m venv .venv && \
   pip install -r requirements.txt
 
 RUN TORCH_CUDA_ARCH_LIST=8.6 pip install git+https://github.com/woct0rdho/SageAttention/ --no-build-isolation
+
+CMD ["python", "wgp.py", "--listen"]
