@@ -18,9 +18,10 @@ Docker compose:
 ```bash
 export WGP_PORT=3000
 export WGP_DIR=/path/to/Wan2GP
-export WGP_LORA_DIR=/path/to/lora
-# If you want to use your second GPU
-export WGPU_ID=1
+# If you have your model dir, outputs etc scattered around, 
+# you can specify directly 
+# export WGP_LORA_DIR=/path/to/lora
+# export GPU_ID=1
 # e.g. this config
 export WGP_CONF=$PWD/wgp_config.json
 docker compose up
