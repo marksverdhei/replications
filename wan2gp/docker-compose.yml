@@ -5,21 +5,30 @@ services:
       dockerfile: Dockerfile
 
     image: wan2gp:latest
+    devices:
+      - /dev/snd
+    group_add:
+      - audio
+    environment:
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - PYTHONUNBUFFERED=1
     ports:
       - "127.0.0.1:${WGP_PORT:-7860}:7860"
     volumes:
-      - "${WGP_LORA_DIR:-${WGP_DIR}}:/workspace/Wan2GP/loras"
-      - "${WGP_LORA_DIR:-${WGP_DIR}}:/workspace/Wan2GP/loras_i2v"
-      - "${OUTPUT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/outputs"
-      - "${CKPT_DIR:-${WGP_DIR}}:/workspace/Wan2GP/ckpts"
-      - "${WGP_CONF:-${WGP_DIR}}:/workspace/Wan2GP/wgp_config.json"
+      - /run/user/1000/pulse:/run/user/1000/pulse
+      - /etc/machine-id:/etc/machine-id:ro
+      - "${WGP_LORA_DIR:-${WGP_DIR}/loras}:/workspace/Wan2GP/loras"
+      - "${WGP_LORA_DIR:-${WGP_DIR}/loras}:/workspace/Wan2GP/loras_i2v"
+      - "${OUTPUT_DIR:-${WGP_DIR}/outputs}:/workspace/Wan2GP/outputs"
+      - "${CKPT_DIR:-${WGP_DIR}/ckpts}:/workspace/Wan2GP/ckpts"
+      - "${WGP_CONF:-${WGP_DIR}/wgp_config.json}:/workspace/Wan2GP/wgp_config.json"
     # command: python -u wgp.py --server-port 7860 --listen
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              device_ids: ["${WGPU_ID:-0}"]
+              device_ids: ["${GPU_ID:-0}"]
               capabilities: [gpu]
 
 volumes:
