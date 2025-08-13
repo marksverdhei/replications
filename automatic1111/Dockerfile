@@ -11,7 +11,6 @@ WORKDIR /home/ubuntu
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 
 WORKDIR /home/ubuntu/stable-diffusion-webui
-
 RUN ./webui.sh --exit
 
 CMD ["./webui.sh", "--listen"]
