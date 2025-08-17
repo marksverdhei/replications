@@ -26,6 +26,6 @@ docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-we
 
 [YuE](/yue/README.md) (8GB RAM, 17GB VRAM, 40GB disk):
 ```bash
-docker run --gpus all -it -v yue:/workspace -v yueroot:/root -v $PWD:/workspace/YuE/inference/output yue:latest
+docker run --gpus all -it -v yue:/workspace -v yueroot:/root -v $PWD:/workspace/YuE/inference/output marksverdhei/yue:latest
 ```
 
