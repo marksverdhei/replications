@@ -13,19 +13,19 @@ For each program, you'll get a more elaborate explatation by looking at the read
 ### Video generation
 [Wan2GP](/wan2gp/README.md) (10GB RAM, 6GB-24GB VRAM):
 ```bash
-docker run --gpus all -it -p 7860:7860 -v wgp:/workspace/wan2gp marksverdhei/wan2gp:latest
+docker run --gpus all -it -p 7860:7860 -v wgp:/workspace/wan2gp -v $PWD:/workspace/wan2gp/outputs marksverdhei/wan2gp:latest
 ```
 
 ### Image generation
 [automatic1111](/automatic1111/README.md) (10GB RAM, 6GB VRAM):
 ```bash
-docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-webui automatic1111:latest
+docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-webui -v $PWD:/home/ubuntu/stable-diffusion-webui/outputs automatic1111:latest
 ```
 
 ### Music generation
 
 [YuE](/yue/README.md) (8GB RAM, 17GB VRAM, 40GB disk):
 ```bash
-docker run --gpus all -it -v yue:/workspace -v yueroot:/root yue:latest
+docker run --gpus all -it -v yue:/workspace -v yueroot:/root -v $PWD:/workspace/YuE/inference/output yue:latest
 ```
 
