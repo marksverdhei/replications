@@ -3,8 +3,8 @@
 ARG BASE_IMAGE=pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
 FROM ${BASE_IMAGE}
 
-# ENV PATH=/usr/local/cuda-12.4/bin:$PATH
-# ENV LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
+ENV PATH=/usr/local/cuda-12.4/bin:$PATH
+ENV LD_LIBRARY_PATH=/opt/conda/lib/python3.11/site-packages/torch/lib:/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
 
 RUN apt-get update && apt-get install git-lfs curl -y
 RUN git lfs install
@@ -14,7 +14,7 @@ RUN cd /workspace/YuE/inference && \
   git clone https://huggingface.co/m-a-p/xcodec_mini_infer
 
 RUN pip install -r ./YuE/requirements.txt
-# RUN pip install --no-build-isolation --no-cache-dir flash-attn
+RUN pip install --no-build-isolation --no-cache-dir flash-attn==2.7.4.post1
 
 WORKDIR /workspace/YuE/inference 
 CMD ["python", "infer.py", \
