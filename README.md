@@ -5,7 +5,7 @@ nvidia only.
 
 All images have been tested on RTX 3090, or CUDA ARCH 8.6 (ampere)
 
-## One-liner replications  
+## Inference  
 
 One-liner replications that assume docker, nvidia-container toolkit, and cuda arch 8.6 (e.g. RTX 3090).
 For each program, you'll get a more elaborate explatation by looking at the readme of the specific dir.
