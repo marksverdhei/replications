@@ -10,7 +10,7 @@ docker build -t wan2gp:latest .
 
 To run
 ```bash
-docker run --rm -v models:/workspace/wan2gp  --gpus all -p 7860:7860 wan2gp python wgp.py --server-port 7860 --listen
+docker run -v wgp:/workspace/wan2gp --gpus all -p 7860:7860 marksverdhei/wan2gp:latest python wgp.py --listen
 ```
 
 Docker compose:
