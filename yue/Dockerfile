@@ -1,5 +1,3 @@
-# FROM pytorch/pytorch:2.7.1-cuda11.8-cudnn9-devel
-# FROM marksverdhei/snail:torch
 ARG BASE_IMAGE=pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
 FROM ${BASE_IMAGE}
 
