@@ -24,7 +24,7 @@ docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-we
 
 ### Music generation
 
-[YuE](/yue/README.md) (10GB RAM, 6GB VRAM):
+[YuE](/yue/README.md) (30GB RAM, 14GB VRAM):
 ```bash
 docker run --gpus all -it -v yue:/workspace -v yueroot:/root yue:latest
 ```
