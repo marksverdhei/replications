@@ -5,12 +5,14 @@ For builds we will mainly be focusing on / assuming RTX 3090, or CUDA ARCH 8.6 (
 
 ## One-liner replications  
 
+One-liner replications that assume docker, nvidia-container toolkit, and cuda arch 8.6
+
 Wan2GP:
 ```bash
-docker run -v wgp:/workspace/wan2gp --gpus all -p 7860:7860 marksverdhei/wan2gp:latest
+docker run --gpus all -it -p 7860:7860 -v wgp:/workspace/wan2gp marksverdhei/wan2gp:latest
 ```
 
 automatic1111 stable-diffusion webui:
 ```bash
-docker run -it -v automatic1111:/home/ubuntu/stable-diffusion-webui -p 7860:7860 --gpus all automatic1111:latest
+docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-webui automatic1111:latest
 ```
