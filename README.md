@@ -29,3 +29,8 @@ docker run --gpus all -it -p 7860:7860 -v a1111:/home/ubuntu/stable-diffusion-we
 docker run --gpus all -it -v yue:/workspace -v yueroot:/root -v $PWD:/workspace/YuE/inference/output marksverdhei/yue:latest
 ```
 
+
+[ACE-Step](/acestep/README.md) (?GB RAM, ?GB VRAM, ?GB disk):
+```bash
+docker run --gpus all -it -p 7865:7865 marksverdhei/acestep:latest
+```

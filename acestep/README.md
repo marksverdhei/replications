@@ -1,7 +1,10 @@
 # ACE-Step and ACE-Step lowmem
 
-Due to high VRAM requirements for the fine-tuning script, I added another dockerfile for lowmem training.
+build:
 
-## Inference
+docker build -t acestep .
 
 
+run:
+
+docker run --gpus all -it -p 7865:7865 acestep
