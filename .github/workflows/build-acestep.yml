@@ -1,11 +1,12 @@
-name: Build and Push YuE
+name: Build and Push ACE-Step
 on:
   push:
     branches:
       - main
+      - acestep
     paths:
-      - 'yue/Dockerfile'
-      - '.github/workflows/build-yue.yml'
+      - 'acestep/Dockerfile'
+      - '.github/workflows/build-acestep.yml'
 
   workflow_dispatch:
 
@@ -26,12 +27,12 @@ jobs:
           username: marksverdhei
           password: ${{ secrets.DOCKER_PAT }}
 
-      - name: Build and push yue image
+      - name: Build and push acestep image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: yue/Dockerfile
+          file: acestep/Dockerfile
           push: true
           tags: |
-            marksverdhei/yue:latest
-            marksverdhei/yue:${{ github.sha }}
+            marksverdhei/acestep:latest
+            marksverdhei/acestep:${{ github.sha }}
