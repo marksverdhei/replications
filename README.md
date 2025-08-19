@@ -30,7 +30,8 @@ docker run --gpus all -it -v yue:/workspace -v yueroot:/root -v $PWD:/workspace/
 ```
 
 
-[ACE-Step](/acestep/README.md) (?GB RAM, ?GB VRAM, ?GB disk):
+[ACE-Step](/acestep/README.md) (?GB RAM, 10GB VRAM, ?GB disk):
 ```bash
-docker run --gpus all -it -p 7865:7865 marksverdhei/acestep:latest
+docker run -v ace:/home/root -v $PWD:/workspace/ACE-Step/outputs --gpus all -it -p 7865:7865 marksverdhei/acestep:latest
+
 ```
