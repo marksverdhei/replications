@@ -36,3 +36,15 @@ jobs:
           tags: |
             marksverdhei/acestep:latest
             marksverdhei/acestep:${{ github.sha }}
+
+      - name: Build and push acestep image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: acestep/Dockerfile
+          push: true
+          build-args: |
+            FORK_OWNER=woct0rdho
+          tags: |
+            marksverdhei/acestep:woct0rdho
+            marksverdhei/acestep:woct0rdho-${{ github.sha }}
