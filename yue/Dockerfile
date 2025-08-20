@@ -1,6 +1,12 @@
 ARG BASE_IMAGE=pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel
 FROM ${BASE_IMAGE}
 
+ARG FORK_OWNER=multimodal-art-projection
+ARG REPO_NAME=YuE
+
+# ARG FORK_OWNER=sgsdxzy
+# ARG REPO_NAME=YuE-exllamav2
+
 ENV PATH=/usr/local/cuda-12.4/bin:$PATH
 ENV LD_LIBRARY_PATH=/opt/conda/lib/python3.11/site-packages/torch/lib:/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
 
