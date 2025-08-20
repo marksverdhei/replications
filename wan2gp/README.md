@@ -26,3 +26,11 @@ export WGP_DIR=/path/to/Wan2GP
 export WGP_CONF=$PWD/wgp_config.json
 docker compose up
 ```
+
+
+Currently, there is a bug in wan2gp, where it will stop generating once no client is connected
+to the gradio app. This is solved in my fork, which you can use at the tag marksverdhei/wan2gp:marksverdhei
+Or build it like this
+```bash
+docker build --build-arg FORK_OWNER=marksverdhei -t wan2gp:latest .
+```

@@ -35,3 +35,15 @@ jobs:
           tags: |
             marksverdhei/wan2gp:latest
             marksverdhei/wan2gp:${{ github.sha }}
+
+      - name: Build and push wan2gp image with marksverdhei fork
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: wan2gp/Dockerfile
+          push: true
+          build-args: |
+            FORK_OWNER=marksverdhei
+          tags: |
+            marksverdhei/wan2gp:marksverdhei
+            marksverdhei/wan2gp:marksverdhei-${{ github.sha }}

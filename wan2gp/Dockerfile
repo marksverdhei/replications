@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install -y \
     libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/marksverdhei/Wan2GP.git
+ARG FORK_OWNER=deepbeepmeep
+
+RUN git clone https://github.com/${FORK_OWNER}/Wan2GP.git
 WORKDIR /workspace/Wan2GP
 RUN pip install -r requirements.txt
 
