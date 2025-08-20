@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      # - diffusion-pipe
+      - diffusion-pipe
     paths:
       - 'diffusion-pipe/Dockerfile'
       - '.github/workflows/build-diffusion-pipe.yml'
