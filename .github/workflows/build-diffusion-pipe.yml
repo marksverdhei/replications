@@ -1,0 +1,50 @@
+name: Build and Push diffusion-pipe
+on:
+  push:
+    branches:
+      - main
+      - diffusion-pipe
+    paths:
+      - 'diffusion-pipe/Dockerfile'
+      - '.github/workflows/build-diffusion-pipe.yml'
+
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: [self-hosted, 16gb-mem]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: marksverdhei
+          password: ${{ secrets.DOCKER_PAT }}
+
+      - name: Build and push diffusion-pipe image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: diffusion-pipe/Dockerfile
+          push: true
+          tags: |
+            marksverdhei/diffusion-pipe:latest
+            marksverdhei/diffusion-pipe:${{ github.sha }}
+
+      - name: Build and push diffusion-pipe image with marksverdhei fork
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: diffusion-pipe/Dockerfile
+          push: true
+          build-args: |
+            FORK_OWNER=marksverdhei
+          tags: |
+            marksverdhei/diffusion-pipe:marksverdhei
+            marksverdhei/diffusion-pipe:marksverdhei-${{ github.sha }}
