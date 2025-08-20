@@ -8,6 +8,8 @@ RUN pip install flash-attn==2.7.4.post1 --no-build-isolation
 
 RUN git clone https://github.com/${FORK_OWNER}/ACE-Step.git
 WORKDIR /workspace/ACE-Step
-RUN pip install -e .
+
+RUN pip install -r requirements.txt
+RUN if [ -f "setup.py" ]; then pip install -e . ; fi
 
 CMD ["acestep"]
