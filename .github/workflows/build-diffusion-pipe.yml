@@ -37,14 +37,14 @@ jobs:
             marksverdhei/diffusion-pipe:latest
             marksverdhei/diffusion-pipe:${{ github.sha }}
 
-      - name: Build and push diffusion-pipe image with marksverdhei fork
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: diffusion-pipe/Dockerfile
-          push: true
-          build-args: |
-            FORK_OWNER=marksverdhei
-          tags: |
-            marksverdhei/diffusion-pipe:marksverdhei
-            marksverdhei/diffusion-pipe:marksverdhei-${{ github.sha }}
+      # - name: Build and push diffusion-pipe image with marksverdhei fork
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     file: diffusion-pipe/Dockerfile
+      #     push: true
+      #     build-args: |
+      #       FORK_OWNER=marksverdhei
+      #     tags: |
+      #       marksverdhei/diffusion-pipe:marksverdhei
+      #       marksverdhei/diffusion-pipe:marksverdhei-${{ github.sha }}
