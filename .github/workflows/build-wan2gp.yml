@@ -4,9 +4,9 @@ name: Build and Push wan2gp
 on:
   push:
     branch:
-      - repo-listen-trigger
+      - main
   # schedule:
-    # - cron: "5 6 * * *"   # once per day at 06:05 UTC
+      - cron: "5 6 * * *"   # once per day at 06:05 UTC
   workflow_dispatch:       # still allow manual runs
 
 env:
